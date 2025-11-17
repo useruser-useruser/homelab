@@ -1,0 +1,15 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editors
+*.swp
+*.swo
+*.bak
+
+# Logs
+*.log
+
+# Draw.io autosaves
+*.bkp
+*.tmp
