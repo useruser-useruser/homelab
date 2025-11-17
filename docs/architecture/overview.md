@@ -5,14 +5,14 @@
         - All roads lead here. This is actually run as a VM inside Proxmox; one day when I can purchase a dedicated device (preferably https://eu.protectli.com/product/v1211/), OPNsense will have a home of its own.
         - Due to hardware limitations, it is allowed 3 cores and 6 GB of RAM.
         - OPNsense acts as my network's:
-            - [gateway](/docs/hardware/networking.md)
-            - [router](/docs/hardware/networking.md)
+            - [gateway](/docs/network/networking.md)
+            - [router](/docs/network/networking.md)
             - [firewall](/docs/security/firewall.md)
-            - [DNS resolver](/docs/hardware/networking.md) (Unbound)
-            - [DNS sinkhole](/docs/hardware/networking.md) (Unbound)
-            - [reverse proxy](/docs/hardware/networking.md) (Caddy)
+            - [DNS resolver](/docs/network/networking.md) (Unbound)
+            - [DNS sinkhole](/docs/network/networking.md) (Unbound)
+            - [reverse proxy](/docs/network/networking.md) (Caddy)
             - [IDS](/docs/security/other.md) (Suricata)
-            - [VPN terminus](/docs/hardware/networking.md) (WireGuard)
+            - [VPN terminus](/docs/network/networking.md) (WireGuard)
         - I have plans to utilize ZenArmor as an IPS (I cannot use Suricata as the IPS since I am using VirtIO). I will update here when I have done that.
 
 - Hypervisor:
@@ -63,6 +63,7 @@
 
 - Miscellaneous:
     - Unmanaged switch
+    - Two hard drives (one SSD, one HDD) that used to be in my laptop and are now in a docking station, combined via LVM. They served as storage for my media files for Jellyfin.
     - ISP-provided router (OPNsense NAT'd behind this)
     - Smartphone running GrapheneOS, connected in several ways to devices in homelab
     - iPad Mini purchased in 2011, still not sure what to do with this extremely outdated item
