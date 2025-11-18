@@ -12,4 +12,52 @@ Directly connected to the unmanaged switch is the Fedora 43 workstation, the Ras
 
 The TP-LINK WAP is an AC1200 Wireless Dual Band Router Model No. Archer A5. I have disabled the 2.4GHz functionality.
 
-The tower's OS is Proxmox, a Debian-based hypervisor OS. You can read more details about the Proxmox setup in [hypervisor](/docs/software/hypervisor.md). 
+For all devices using SSH, I choose a non-traditional port and still only allow access to SSH from LAN. The only ports exposed to the Internet are for WireGuard, http/https, and Jellyfin, with the latter two using a reverse proxy to the Raspberry Pi.
+
+The tower's OS is Proxmox, a Debian-based hypervisor OS. You can read more details about the Proxmox setup in [hypervisor](/docs/software/hypervisor.md).
+
+The first VM is OPNsense. OPNsense is the network's central focus point. It is the network's router, gateway, firewall, and more. It is the only node on the network that is NAT'd by the ISP-provided router, receiving a static IP address from the router, but to the rest of the LAN, it is 192.168.1.100. Here are the in-depth details:
+    - WAN is on vtnet0
+    - LAN is on vtnet1
+    - HTTP Strict Transport Security enabled
+    - SSH enabled but not for root user (admin user created)
+    - Reverse Proxy:
+        - I installed Caddy (os-caddy plugin) and set up the following firewall rules:
+            - WAN: Allow http traffic from anywhere to this firewall
+            - WAN: Allow https traffic from anywhere to this firewall
+            - LAN: Allow http traffic from anywhere to this firewall
+            - LAN: Allow https traffic from anywhere to this firewall
+        - Auto https on
+        - I set up domains and handlers in the Caddy interface to ensure that I am able to access Nextcloud, Jellyfin, and use my carddav/caldav items, which are located in Nextcloud. When I first did this, there was a lot of trial and error, as the information I was able to find online can be sporadic and sometimes contradictory. You can find what I put [here]().
+        - I had to put a header in there for Strict Transport Security.
+    - Firewall Rules - I have a few firewall rules based on my needs. Here they are:
+        - Block LAN from accessing ISP-provided router
+            - I don't want any device to be able to access this; if I need to be able to, I will connect directly via Ethernet to it.
+        - Block Roomba from Internet
+            - I don't want my Roomba to send information about my home back to any company; I value my privacy, and I believe that once a product is paid for, the transaction is finished and I no longer owe anything to the company that made the product. I do not use the Roomba app (except for when I initially set it up to connect to my network's WiFi) and control it via openHAB.
+        - Allow Roomba to only communicate with Raspberry Pi (two rules, one for blocking access to LAN, one for passing access to Pi)
+            - The Raspberry Pi has openHAB running on it, so the Roomba must communicate with it.
+    - WireGuard VPN
+        - I want to keep my mobile devices connected to the home network at all times, so as soon as they disconnect from the home WiFi they connect to the VPN. Setting up the VPN requires a lot more than just turning it off and on:
+            - Create WireGuard instance
+            - Firewall rules:
+                - Allow WireGuard devices to access network
+                - Allow WireGuard devices to access OPNsense GUI
+                - Allow traffic over 51820 to firewall
+                - Allow traffic over 51820 to access Internet
+            - Generate a peer (mobile device)
+            - Import peer info to mobile device
+    - IDS (Suricata)
+        - Due to using VirtIO in Proxmox, Suricata cannot run as an IPS in OPNsense. Eventually I will have a dedicated device to run OPNsense on bare metal, and then I can simply run Suricata as an IDS/IPS, but for now it is only an IDS.
+        - I had to disable hardware offloading features per recommendation from OPNsense's documentation.
+        - [Here]() are the main settings.
+        - The rulesets I chose:
+            - abuse.ch/Feodo Tracker
+            - abuse.ch/ThreatFox
+            - abuse.ch/SSL IP Blacklist
+            - abuse.ch/SSL Fingerprint Blacklist
+            - abuse.ch/URLHaus
+            - ET open/botcc
+            - ET open/compromised
+            - ET open/dshield
+        
