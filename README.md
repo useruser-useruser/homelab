@@ -4,7 +4,7 @@ Welcome to my homelab documentation. This repository contains details about my h
 
 Please note that this documentation is constantly evolving; I started working on this on November 17, 2025, so depending on when you view it, it might not be as extensive as I would like it to be.
 
-Get started in the [Overiew](/docs/architecture/overview.md)!s
+Get started in the [Overiew](/docs/architecture/overview.md)!
 
 ******
 Quick Relevant About Me:
