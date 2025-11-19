@@ -105,6 +105,8 @@ I have Uptime Kuma installed on the Raspberry Pi to warn me when certain service
 
 I have Crowdsec installed as kind of a web application firewall; so far it hasn't had to block anything, which either means my network is well hidden or Crowdsec isn't doing anything. I assume the former since Crowdsec seems to be a good tool for many people.
 
+I used to have openHAB installed because of the Roomba that I own, but I stopped using the Roomba and openHAB was always hogging a ton of resources on the Pi. When I move to my next home and get a PoE security camera I'll reinstall openHAB (hopefully it runs better in Debian 13).
+
 ## Debian
 
 This server is a VM in Proxmox. Originally I wanted the Raspberry Pi to act as a vulnerability scanner for the network, but it could not handle it. After purchasing this tower and setting up Proxmox, I created the Debian VM (I chose Debian because that's what I have the most experience with, and it's very easy to use once you know how to use it). I installed OpenVAS Greenbone via Docker and Nessus Essentials via deb. I run scans about once a week; most of the results are items of no consequence or something that my risk analysis considers not likely to happen to me. One of the big challenges was finding a way to allow them to do an authenticated scan on the Raspberry Pi without being able to put in a 6-digit OTP for MFA. I had to create a new user on the Pi that has very limited functions but does not need MFA for SSH (still uses keys). It was a little complex, but I figured it out.

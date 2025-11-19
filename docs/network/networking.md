@@ -16,7 +16,7 @@ For all devices using SSH, I choose a non-traditional port and still only allow 
 
 The tower's OS is Proxmox, a Debian-based hypervisor OS. You can read more details about the Proxmox setup in [hypervisor](/docs/software/hypervisor.md).
 
-The first VM is OPNsense. OPNsense is the network's central focus point. It is the network's router, gateway, firewall, and more. It is the only node on the network that is NAT'd by the ISP-provided router, receiving a static IP address from the router, but to the rest of the LAN, it is 192.168.1.100. Here are the in-depth details:
+The first VM is OPNsense. OPNsense is the network's central focus point. It is the network's router, gateway, firewall, and more. It is the only node on the network that is NAT'd by the ISP-provided router, receiving a static IP address from the router, but to the rest of the LAN, it is [OPNsense's LAN IP]. Here are the in-depth details:
 
 - WAN is on vtnet0
 - LAN is on vtnet1
