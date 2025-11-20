@@ -19,7 +19,7 @@ As with all of my devices, SSH keys are required to access it, but I also add MF
 
 ### Nextcloud
 
-<img src="/assets/photos/nextcloud.png" width="200">
+![image](/assets/photos/nextcloud.png)
 
 For cloud storage, I set up Nextcloud. When I was first learning, I used NextcloudPi, but that did not work as well as I wanted. I tried to use Docker, but I had issues getting the Docker container to work correctly (and back then I did not have much experience with Docker). In the end I went with just installing it on bare metal, and have done that ever since, every time I do a rebuild. I build a simple database using MariaDB:
 
