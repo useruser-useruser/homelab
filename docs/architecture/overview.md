@@ -55,9 +55,6 @@ After I move, I plan to make this look much neater.
 - macOS Monterrey
     - I bought this a few months ago because a coworker was selling it for $100; I wanted to learn more about how macOS works, and so far I've learned a good bit from a user's perspective. I now use it as my outside-of-the-home laptop (which only accounts for about 10% because I almost never leave the house except to go to my job). It has to run Monterrey because it's older and Intel-based.
     - More info in [overview](/docs/hardware/overview.md)
-- Windows 11
-    - This is actually my spouse's computer. She lets me use it whenever I need to use Windows that runs faster than a VM.
-    - More info in [overview](/docs/hardware/overview.md)
 
 ## Virtual Workstations:
 - Kali Linux
