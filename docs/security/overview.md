@@ -44,7 +44,7 @@ I have Greenbone and Nessus Essentials installed on the Debian VM and run regula
 ## Smartphone
 My smartphone runs GrapheneOS. I have two profiles, the main profile and the work profile. The main profile uses ReThinkDNS as its firewall. It then connects to the work profile via a proxy program called sing-box, so all traffic goes through that and goes out via the work profile. The work profile is connected to the Internet via WG Tunnel (which connects to my home network). I have the commercial VPN also installed in both profiles as a backup in case something doesn't quite work right. 
 
-<img src="/assets/photos/rethink.png" width="300">
+<img src="/assets/photos/rethink.png" width="250">
 
 Security- and privacy-focused apps I utilize on the phone are:
 
