@@ -1,6 +1,6 @@
 # Networking
 
-Here is a description of my network; see the diagram [here]().
+Here is a description of my network.
 
 I have an ISP-provided router. Unfortunately I cannot put it into bridge mode, so it provides Network Address Translation (NAT) to devices behind it. However, this may work to my advantage for something I have planned for the [future](/docs/issues/plans.md).
 
@@ -31,7 +31,7 @@ The first VM is OPNsense. OPNsense is the network's central focus point. It is t
     - LAN: Allow http traffic from anywhere to this firewall
     - LAN: Allow https traffic from anywhere to this firewall
 - Auto https on
-- I set up domains and handlers in the Caddy interface to ensure that I am able to access Nextcloud, Jellyfin, and use my carddav/caldav items, which are located in Nextcloud. When I first did this, there was a lot of trial and error, as the information I was able to find online can be sporadic and sometimes contradictory. You can find what I put [here]().
+- I set up domains and handlers in the Caddy interface to ensure that I am able to access Nextcloud, Jellyfin, and use my carddav/caldav items, which are located in Nextcloud. When I first did this, there was a lot of trial and error, as the information I was able to find online can be sporadic and sometimes contradictory.
 - I had to put a header in there for Strict Transport Security.
 
 ![image](/assets/photos/opnsense_caddy.png)
@@ -63,7 +63,6 @@ The first VM is OPNsense. OPNsense is the network's central focus point. It is t
 ## IDS (Suricata)
 - Due to using VirtIO in Proxmox, Suricata cannot run as an IPS in OPNsense. Eventually I will have a dedicated device to run OPNsense on bare metal, and then I can simply run Suricata as an IDS/IPS, but for now it is only an IDS.
 - I had to disable hardware offloading features per recommendation from OPNsense's documentation.
-- [Here]() are the main settings.
 - The rulesets I chose:
     - abuse.ch/Feodo Tracker
     - abuse.ch/ThreatFox

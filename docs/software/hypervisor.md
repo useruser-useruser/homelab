@@ -4,6 +4,8 @@ I use Proxmox as my hypervisor on the Lenovo Tower (see [hardware overview](/doc
 
 ![image](/assets/photos/proxmox.png)
 
+*(Two of the VMs are missing because I recently deleted them.)*
+
 I chose Promox because originally the tower only had OPNsense installed, but dedicating the entire machine to OPNsense was a bit overkill, and I wanted to have a server for vulnerability scanning and SIEM. My experience before Proxmox with VMs was limited to just having a VM of Windows on my Ubuntu or Fedora workstation using Virtualbox. However, ever since using Proxmox, I have learned a great deal and see the many benefits of virtualizing (especially when an OS needs to be spun up very quickly for specific tasks).
 
 I created an admin user so I don't have to use the root account.

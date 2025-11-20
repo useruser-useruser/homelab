@@ -2,6 +2,12 @@
 
 ![image](/assets/photos/physical_layout.png)
 
+After I move, I plan to make this look much neater.
+
+![image](/assets/photos/device_list.png)
+
+*(Slightly outdated since I removed the Arch VM as well as the Roomba)*
+
 ## Router:
 - OPNsense
     - All roads lead here. This is actually run as a VM inside Proxmox; one day when I can purchase a dedicated device (preferably https://eu.protectli.com/product/v1211/), OPNsense will have a home of its own.
