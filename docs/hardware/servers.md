@@ -19,6 +19,8 @@ As with all of my devices, SSH keys are required to access it, but I also add MF
 
 ### Nextcloud
 
+<img src="/assets/photos/nextcloud.png" width="200">
+
 For cloud storage, I set up Nextcloud. When I was first learning, I used NextcloudPi, but that did not work as well as I wanted. I tried to use Docker, but I had issues getting the Docker container to work correctly (and back then I did not have much experience with Docker). In the end I went with just installing it on bare metal, and have done that ever since, every time I do a rebuild. I build a simple database using MariaDB:
 
     CREATE DATABASE [name of the database];
@@ -87,11 +89,17 @@ and
 
 This took a lot of back and forth, web searching, and trial and error. But it works!
 
+![image](/assets/photos/opnsense_caddy.png)
+
 ### Others
 
 I use Webmin as my dashboard to check what is going on; I make sure to set up MFA with it, even though it's not accessible from the Internet.
 
+![image](/assets/photos/webmin.png)
+
 I also use NetData as a more in-depth dashboard, though it lags a bit so I only use it when I really need to drill down deep into an issue.
+
+![image](/assets/photos/netdata.png)
 
 I have Stirling PDF installed via Docker for PDF editing.
 
@@ -99,9 +107,15 @@ I have Omni-tools installed via Docker because it has a lot of useful small tool
 
 I have NetAlertX installed via Docker so that I can quickly see if any new devices are on my LAN. I do hide the SSID of the WAP, and make the password EXTREMELY long, which I know isn't fool-proof, but so far nobody besides myself or my spouse has accessed the LAN, and I can see it clearly in NetAlertX. I have set it up so that if any new devices do access it that aren't mine, I get an alert sent to my phone via ntfy immediately.
 
+![image](/assets/photos/netalertx.png)
+
 I installed Kismet (and had to purchase a small WiFi dongle since Raspberry Pi's built-in WiFi card doesn't support monitor mode). This is more just to satisfy my curiosity and see what wireless devices are around me. I also want to make sure my WAP's SSID isn't being broadcast (it was when I had the 2.4GHz on, but not anymore since I turned that off). Eventually I would like to get enough devices to create a miniature network to practice penetration testing on, but that is far down the road.
 
+![image](/assets/photos/kismet.png)
+
 I have Uptime Kuma installed on the Raspberry Pi to warn me when certain services go down. I should probably install this on a separate device, though, because usually when a service goes down it's because the entire Pi has locked up or cannot be reached, which means Uptime Kuma cannot notify me of anything. It uses ntfy to send messages to my phone.
+
+![image](/assets/photos/uptimekuma.png)
 
 I have Crowdsec installed as kind of a web application firewall; so far it hasn't had to block anything, which either means my network is well hidden or Crowdsec isn't doing anything. I assume the former since Crowdsec seems to be a good tool for many people.
 
@@ -110,5 +124,9 @@ I used to have openHAB installed because of the Roomba that I own, but I stopped
 ## Debian
 
 This server is a VM in Proxmox. Originally I wanted the Raspberry Pi to act as a vulnerability scanner for the network, but it could not handle it. After purchasing this tower and setting up Proxmox, I created the Debian VM (I chose Debian because that's what I have the most experience with, and it's very easy to use once you know how to use it). I installed OpenVAS Greenbone via Docker and Nessus Essentials via deb. I run scans about once a week; most of the results are items of no consequence or something that my risk analysis considers not likely to happen to me. One of the big challenges was finding a way to allow them to do an authenticated scan on the Raspberry Pi without being able to put in a 6-digit OTP for MFA. I had to create a new user on the Pi that has very limited functions but does not need MFA for SSH (still uses keys). It was a little complex, but I figured it out.
+
+![image](/assets/photos/greenbone.png)
+
+![image](/assets/photos/nessus.png)
 
 I really want this VM to be a SIEM as well, but I keep running into issues when setting up Graylog. I think the main issue is just that the tower doesn't have enough RAM. It only has 16 GB, which must be split between three 24/7 OSes (Proxmox, OPNsense, Debian) and then when I want to use one of the other non-permanent VMs I have installed on there. I don't want to go out and spend $1000 on a new tower just for homelab practice, so once the AI bubble pops, I'll buy some RAM on the cheap and upgrade. I believe this tower maxes out at 64 GB, so that's probably what I'll get.

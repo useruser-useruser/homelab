@@ -1,5 +1,7 @@
 # System Architecture Overview
 
+![image](/assets/photos/physical_layout.png)
+
 ## Router:
 - OPNsense
     - All roads lead here. This is actually run as a VM inside Proxmox; one day when I can purchase a dedicated device (preferably https://eu.protectli.com/product/v1211/), OPNsense will have a home of its own.

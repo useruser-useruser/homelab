@@ -18,6 +18,8 @@ The tower's OS is Proxmox, a Debian-based hypervisor OS. You can read more detai
 
 The first VM is OPNsense. OPNsense is the network's central focus point. It is the network's router, gateway, firewall, and more. It is the only node on the network that is NAT'd by the ISP-provided router, receiving a static IP address from the router, but to the rest of the LAN, it is [OPNsense's LAN IP]. Here are the in-depth details:
 
+![image](/assets/photos/opnsense_dashboard.png)
+
 - WAN is on vtnet0
 - LAN is on vtnet1
 - HTTP Strict Transport Security enabled
@@ -31,6 +33,9 @@ The first VM is OPNsense. OPNsense is the network's central focus point. It is t
 - Auto https on
 - I set up domains and handlers in the Caddy interface to ensure that I am able to access Nextcloud, Jellyfin, and use my carddav/caldav items, which are located in Nextcloud. When I first did this, there was a lot of trial and error, as the information I was able to find online can be sporadic and sometimes contradictory. You can find what I put [here]().
 - I had to put a header in there for Strict Transport Security.
+
+![image](/assets/photos/opnsense_caddy.png)
+
 ## Firewall Rules
 - I have a few firewall rules based on my needs.
 - Block LAN from accessing ISP-provided router
@@ -39,6 +44,9 @@ The first VM is OPNsense. OPNsense is the network's central focus point. It is t
     - I don't want my Roomba to send information about my home back to any company; I value my privacy, and I believe that once a product is paid for, the transaction is finished and I no longer owe anything to the company that made the product. I do not use the Roomba app (except for when I initially set it up to connect to my network's WiFi) and control it via openHAB.
 - Allow Roomba to only communicate with Raspberry Pi (two rules, one for blocking access to LAN, one for passing access to Pi)
     - The Raspberry Pi has openHAB running on it, so the Roomba must communicate with it.
+
+![image](/assets/photos/opnsense_firewall_LAN.png)
+
 ## WireGuard VPN
 - I want to keep my mobile devices connected to the home network at all times, so as soon as they disconnect from the home WiFi they connect to the VPN. Setting up the VPN requires a lot more than just turning it off and on:
     - Create WireGuard instance
@@ -49,6 +57,9 @@ The first VM is OPNsense. OPNsense is the network's central focus point. It is t
         - Allow traffic over 51820 to access Internet
     - Generate a peer (mobile device)
     - Import peer info to mobile device
+
+![image](/assets/photos/opnsense_VPN.png)
+
 ## IDS (Suricata)
 - Due to using VirtIO in Proxmox, Suricata cannot run as an IPS in OPNsense. Eventually I will have a dedicated device to run OPNsense on bare metal, and then I can simply run Suricata as an IDS/IPS, but for now it is only an IDS.
 - I had to disable hardware offloading features per recommendation from OPNsense's documentation.
@@ -62,3 +73,5 @@ The first VM is OPNsense. OPNsense is the network's central focus point. It is t
     - ET open/botcc
     - ET open/compromised
     - ET open/dshield
+
+![image](/assets/photos/opnsense_IDS.png)
