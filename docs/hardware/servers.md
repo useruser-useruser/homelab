@@ -129,4 +129,6 @@ This server is a VM in Proxmox. Originally I wanted the Raspberry Pi to act as a
 
 ![image](/assets/photos/nessus.png)
 
+*(You'll notice there are no scans yet because I recently reinstalled this VM.)*
+
 I really want this VM to be a SIEM as well, but I keep running into issues when setting up Graylog. I think the main issue is just that the tower doesn't have enough RAM. It only has 16 GB, which must be split between three 24/7 OSes (Proxmox, OPNsense, Debian) and then when I want to use one of the other non-permanent VMs I have installed on there. I don't want to go out and spend $1000 on a new tower just for homelab practice, so once the AI bubble pops, I'll buy some RAM on the cheap and upgrade. I believe this tower maxes out at 64 GB, so that's probably what I'll get.
