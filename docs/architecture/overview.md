@@ -8,6 +8,10 @@ After I move, I plan to make this look much neater.
 
 *(Slightly outdated since I removed the Arch VM as well as the Roomba)*
 
+![image](/assets/diagrams/Network_Map.png)
+
+A very basic network diagram.
+
 ## Router:
 - OPNsense
     - All roads lead here. This is actually run as a VM inside Proxmox; one day when I can purchase a dedicated device (preferably https://eu.protectli.com/product/v1211/), OPNsense will have a home of its own.
